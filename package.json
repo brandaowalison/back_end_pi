@@ -1,0 +1,25 @@
+{
+  "name": "back_end_pi",
+  "version": "1.0.0",
+  "description": "Repositório para projetos da disciplina de Coding: Linguagens e Técnicas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev src/index.ts",
+    "start": "node build/index.js",
+    "build": "rimraf .build && tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "mysql2": "^3.11.5",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20"
+  }
+}
