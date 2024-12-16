@@ -7,7 +7,8 @@ import profissionalRepository from "../repositories/profissionalRepository";
 export default class ProfissionalController {
 
     async create(req: Request, res: Response) {
-        if (!req.body.nome) {
+        const { nome, CPF, email, sexo, salario, data_Nasc } = req.body;
+        if (!nome || !CPF || !email || !sexo || !salario || !data_Nasc) {
             res.status(400).send({
                 message: "Não pode ser vazio o profissional!"
             });
@@ -31,7 +32,7 @@ export default class ProfissionalController {
             res.status(200).send(profissional);
         } catch (err) {
             res.status(500).send({
-                message: "Erro encontrado quando estava se fazendo a busca por todos os profissionais."
+                message: "Erro encontrado quando estava se fazendo a busca por todos os profissionas."
             });
         }
     }

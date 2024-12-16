@@ -13,6 +13,6 @@ export const AppDataSource = new DataSource({
     password: config.PASSWORD,
     database: config.DB,
     entities: [ Profissional, Especialidade ],
-    synchronize: true,
-    logging: true,
+    synchronize: false,
+    logging: false,
 })

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinColumn } from 'typeorm';
 import { Profissional } from './Profissional';
 
 @Entity('Especialidades')
@@ -10,20 +10,25 @@ export class Especialidade {
   nome!: string;
 
   @Column('decimal', { precision: 7, scale: 2 })
-  precoBase!: number;
+  precoBase: number;
 
   @Column({ length: 45 })
-  descricao!: string;
+  descricao: string;
 
-  @ManyToMany(() => Profissional,(profissional) => profissional.especialidades)
-  profissionais!: Profissional;
+  @ManyToMany(() => Profissional)
+  @JoinColumn({ name: 'Profissional_idProfissional' })
+  profissionais!: Profissional[];
 
   constructor(nome: string, 
     precoBase: number, 
     descricao: 
-    string,) {
+    string,
+    id? : number,
+    profissionais?: Profissional[]) {
     this.nome = nome;
     this.precoBase = precoBase;
     this.descricao = descricao;
+    if(id) this.idEspecialidade = id;
+    if (profissionais) this.profissionais = profissionais
     }
 }

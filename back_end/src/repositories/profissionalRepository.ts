@@ -7,10 +7,9 @@ class ProfissionalRepository {
 
     async save(profissional: Profissional): Promise<Profissional> {
         try {
-            const savedProfissional = await this.profissionalRepository.save(profissional);
-            return savedProfissional;
+            this.profissionalRepository.save(profissional);
+            return profissional;
         } catch (err) {
-        
             throw new Error("Falha ao criar cadastro do Profissional!");
         }
     }

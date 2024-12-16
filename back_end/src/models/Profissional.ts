@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany,} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinColumn,} from 'typeorm';
 import { Especialidade } from './Especialidade';
 
 @Entity('Profissionais')
@@ -24,8 +24,9 @@ export class Profissional {
   @Column('date')
   data_Nasc: Date;
 
-  @ManyToMany(() => Especialidade,(Especialidade) => Especialidade.profissionais)
-  especialidades!: Profissional;
+  @ManyToMany(() => Especialidade)
+  @JoinColumn({name: "Especialidade_idEspecialidade"}) 
+  especialidades!: Especialidade[];
 
   constructor( nome: string, 
     CPF: string, 

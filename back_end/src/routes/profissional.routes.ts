@@ -12,28 +12,28 @@ class ProfissionalRoutes {
 
   intializeRoutes() {
 
-    // Criar um novo genero.
+    // Criar um novo profissional.
     this.router.post("/profissional", this.controller.create);
 
-    // Retornar os generos já cadastrados.
+    // Retornar os profissionais já cadastrados.
     this.router.get("/profissionais", this.controller.findAll);
 
-    // Retorna um genero específico pelo seu id
+    // Retorna um profissional específico pelo seu id
     this.router.get("/profissional/:id", this.controller.findOne);
 
-    // Retorna um genero específico pelo seu nome
+    // Retorna um profissional específico pelo seu nome
     this.router.get("/profissional/nome/:nome", this.controller.findName);
 
-    // Atualizar um genero pelo seu id
+    // Atualizar um profissional pelo seu id
     this.router.put("/profissional/:id", this.controller.update);
 
-    // Deleta um genero pelo seu id
+    // Deleta um profissional pelo seu id
     this.router.delete("/profissional/:id", this.controller.delete);
 
-    // Deleta um genero pelo seu id embutido
-    this.router.delete("/profissional", this.controller.deleteEmbutido);
+    // Deleta um profissional pelo seu id embutido
+    // this.router.delete("/profissional", this.controller.deleteEmbutido);
 
-    // Deleta todos os generos
+    // Deleta todos os profissionais
     this.router.delete("/profissional", this.controller.deleteAll);
   }
 }

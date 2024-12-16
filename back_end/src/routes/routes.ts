@@ -1,10 +1,10 @@
 import { Application } from "express";
-import profissionalRoutes from "./profissional.routes";
-import especialidadeRoutes from "./especialidade.routes";
+import ProfissionalRoutes from "./profissional.routes";
+import EspecialidadeRoutes from "./especialidade.routes";
 
 // Concentrador de rotas
 export default class Routes {
   constructor(app: Application) {
-    app.use("/SalaoBelezaPi", profissionalRoutes, especialidadeRoutes);
+    app.use("/SalaoBelezaPi", ProfissionalRoutes, EspecialidadeRoutes);
   }
 }
