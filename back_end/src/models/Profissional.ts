@@ -1,15 +1,10 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  OneToMany,
-} from 'typeorm';
-import { ProfissionalEspecialidade } from './Pr';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany,} from 'typeorm';
+import { Especialidade } from './Especialidade';
 
 @Entity('Profissionais')
 export class Profissional {
   @PrimaryGeneratedColumn()
-  id_Profissional: number;
+  idProfissional!: number;
 
   @Column({ length: 45 })
   nome: string;
@@ -29,20 +24,16 @@ export class Profissional {
   @Column('date')
   data_Nasc: Date;
 
-  @OneToMany(
-    () => ProfissionalEspecialidade,
-    (profissionalEspecialidade) => profissionalEspecialidade.profissional,
-  )
-  profissionalEspecialidades: ProfissionalEspecialidade[];
+  @ManyToMany(() => Especialidade,(Especialidade) => Especialidade.profissionais)
+  especialidades!: Profissional;
 
-  constructor(
-    nome: string,
-    CPF: string,
-    email: string,
-    sexo: string,
-    salario: number,
-    data_Nasc: Date,
-  ) {
+  constructor( nome: string, 
+    CPF: string, 
+    email: string, 
+    sexo: string, 
+    salario: number, 
+    data_Nasc: Date, ) 
+  {
     this.nome = nome;
     this.CPF = CPF;
     this.email = email;

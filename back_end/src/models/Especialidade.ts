@@ -1,35 +1,29 @@
-import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    OneToMany,
-  } from 'typeorm';
-  import { ProfissionalEspecialidade } from './ProfissionalEspecialidade';
-  
-  @Entity('Especialidades')
-  export class Especialidade {
-    @PrimaryGeneratedColumn()
-    id_Especialidade: number;
-  
-    @Column({ length: 45 })
-    nome: string;
-  
-    @Column('decimal', { precision: 7, scale: 2 })
-    preco_Base: number;
-  
-    @Column({ length: 45 })
-    descricao: string;
-  
-    @OneToMany(
-      () => ProfissionalEspecialidade,
-      (profissionalEspecialidade) => profissionalEspecialidade.especialidade,
-    )
-    profissionalEspecialidades: ProfissionalEspecialidade[];
-  
-    constructor(nome: string, preco_Base: number, descricao: string) {
-      this.nome = nome;
-      this.preco_Base = preco_Base;
-      this.descricao = descricao;
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
+import { Profissional } from './Profissional';
+
+@Entity('Especialidades')
+export class Especialidade {
+  @PrimaryGeneratedColumn()
+  idEspecialidade!: number;
+
+  @Column({ length: 45 })
+  nome!: string;
+
+  @Column('decimal', { precision: 7, scale: 2 })
+  precoBase!: number;
+
+  @Column({ length: 45 })
+  descricao!: string;
+
+  @ManyToMany(() => Profissional,(profissional) => profissional.especialidades)
+  profissionais!: Profissional;
+
+  constructor(nome: string, 
+    precoBase: number, 
+    descricao: 
+    string,) {
+    this.nome = nome;
+    this.precoBase = precoBase;
+    this.descricao = descricao;
     }
-  }
-  
+}

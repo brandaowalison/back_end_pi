@@ -1,6 +1,9 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
 import { config, dialect } from "../config/db.config"
+import { Profissional } from "../models/Profissional"
+import { Especialidade } from "../models/Especialidade"
+
 
 export const AppDataSource = new DataSource({
     type: dialect,
@@ -9,7 +12,7 @@ export const AppDataSource = new DataSource({
     username: config.USER,
     password: config.PASSWORD,
     database: config.DB,
-    entities: ['src/models/*.ts'],
+    entities: [ Profissional, Especialidade ],
     synchronize: true,
-    logging: false,
+    logging: true,
 })
