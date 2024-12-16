@@ -30,9 +30,6 @@ class ProfissionalRoutes {
     // Deleta um profissional pelo seu id
     this.router.delete("/profissional/:id", this.controller.delete);
 
-    // Deleta um profissional pelo seu id embutido
-    // this.router.delete("/profissional", this.controller.deleteEmbutido);
-
     // Deleta todos os profissionais
     this.router.delete("/profissional", this.controller.deleteAll);
   }

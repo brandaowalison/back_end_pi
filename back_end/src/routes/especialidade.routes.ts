@@ -29,7 +29,7 @@ class EspecialidadeRoutes {
     this.router.delete("/especialidade/:id", this.controller.delete);
 
 
-    this.router.delete("/profissional", this.controller.deleteAll);
+    this.router.delete("/especialidade", this.controller.deleteAll);
   }
 }
 

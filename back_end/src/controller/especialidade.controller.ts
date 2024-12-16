@@ -8,7 +8,7 @@ export default class EspecialidadeController {
 
     async create(req: Request, res: Response) {
         const { nome, precoBase, descricao } = req.body;
-        if (!nome || !precoBase || descricao) {
+        if (!nome || !precoBase || !descricao) {
             res.status(400).send({
                 message: "Não pode ser vazio a Especialidade!"
             });
